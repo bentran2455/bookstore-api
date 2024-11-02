@@ -1,14 +1,11 @@
 const express = require("express");
-const app = express();
+var router = express.Router();
 const bookRouter = require("./book.api.js");
 
-app.get("/", (req, res) => {
+router.get("/", (req, res) => {
   res.status(200).send("Welcome to CoderSchool!");
 });
 
-app.use("/books", bookRouter);
+router.use("/books", bookRouter);
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+module.exports = router;
